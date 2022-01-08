@@ -1,0 +1,96 @@
+html {
+    font-family: 'Noto Serif KR';
+}
+#intro, #questions, #result{
+    /*화면을 가득 채우기 위한 속성*/
+    width: 100%;
+    height: 100%;
+    /*절대위치 */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /*flex*/
+    display: flex;
+    /*중앙 정렬*/
+    justify-content: center;
+    align-items: center;
+    
+    background-color: rgb(233, 233, 233);
+    flex-direction: column;
+}
+
+#introBox, #qnaBox, #resultBox{
+    padding: 80px;
+    background-color: white;
+    border-radius: 1%;
+}
+
+.element {
+    text-align-last: center;
+    text-align: -webkit-center;
+}
+
+#title {
+    font-size: 100px;
+    font-family: sans-serif;
+}
+
+#start_btn{
+    color: black;
+    background-color: white;
+    width: 120px;
+    border: outset;
+    transition: 1s;
+}
+
+#start_btn:hover{
+    color: white;
+    background-color: rgb(233, 233, 233);
+    transition: 1s;
+}
+
+#start_btn:active{
+    border: inset;
+}
+
+#Answer1, #Answer2{
+    color: black;
+    background-color: white;
+    width: auto;
+    transition: 0.5s;
+    border: 0;
+    font-family: 'Noto Serif KR';
+}
+
+#Answer1:hover, #Answer2:hover{
+    color: white;
+    background-color: gainsboro;
+}
+
+.list_start {
+    text-align: center;
+    width: 525px;
+}
+
+.list_detail {
+    display: inline-block;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 5px;
+    opacity: 0;
+}
+
+.bar {
+    width: 550px; 
+    height: 50px;
+}
+
+.bar_detail {
+    width: 20px;
+    height: 20px;
+    padding: 0px
+    margin: 5px;
+    display: inline-block;
+    border: 1px solid;
+}
