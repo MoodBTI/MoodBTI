@@ -9,28 +9,65 @@ const answer2 = document.getElementById('Answer2');
 const result_text = document.getElementById('result_text');
 const result_img = document.getElementById('result_img');
 
+const bar = [];
+for(var i = 0; i<12;i++)
+  bar[i] = document.getElementById(i);
 
 var index = 0;
-var endnum = 12;
+var endnum = 11;
 
 function calculate(value, index){
   //스코어 ++1
   if (value == "one"){
     score[parseInt(index / 3)][0]++;
-    console.log(score[parseInt(index / 3)][0]);
+    console.log(index/3 + " " + score[parseInt(index / 3)][0]);
   }
   else if (value == "two"){
     score[parseInt(index / 3)][1]++;
     
-    console.log(score[parseInt(index / 3)][1]);
+    console.log(index/3 + " " + score[parseInt(index / 3)][1]);
   }
   else {}
 }
 
-function start(){
+function next(button){
+  /* endnum == 12 */
+  if(index === endnum) {
+    /* 주어진 질문에 모두 대답을 마쳤으면 end() 호출 후 함수 종료 */
+    end();
+    return ;
+  }
+  //버튼 value를 인자로 점수 계산 함수 호출 
+  calculate(button.value, index);
 
+  
+  //바 채우기
+  bar[index].style.backgroundColor = 'grey';
+  
+  //다음 질문
+  index++;
+
+  //화면에 띄우기
+  question.innerText = QnA[index].Q;
+  answer1.innerText = QnA[index].A1;
+  answer2.innerText = QnA[index].A2;
+
+
+}
+
+function start(){
+  /*
   intro.style.display = "none";
-  questions.style.display = "flex";
+  result.style.display = "flex";
+  result_img.innerHTML = "<img src='./img/ENFP.PNG' class='img-responsive'>";
+
+  */
+  intro.style.opacity = "0";
+  intro.style.transition = "1s";
+  setTimeout(function(){intro.style.display = "none"}, 1000);
+  questions.style.opacity = "1";
+  questions.style.transition = "1s";
+  setTimeout(function(){questions.style.display = "flex"}, 1000);
   question.innerText = QnA[index].Q;
   answer1.innerText = QnA[index].A1;
   answer2.innerText = QnA[index].A2;
@@ -54,29 +91,14 @@ function end(){
 		}
 	}
   console.log(result_mbti);
-  result_img.innerHTML = "<img src='./img/"+result_mbti+".PNG' width = 20%>";
+  result_img.innerHTML = "<img src='./img/"+result_mbti+".PNG' width='80%' class='img-responsive'>";
+  
   for(var i = 0; i < 16; i++){
     if(resultData[i].mbti == result_mbti){
-      result_text.innerText = resultData[i].main;
+      //result_text.innerText = resultData[i].main;
+      result_text.innerHTML = "<span><b>" + resultData[i].main + "</b></span><span>같은 사람이네요.</span><br><br><span>" + resultData[i].sub + "</span>";
     }
   }
 }
 
-function next(button){
-  /* endnum == 12 */
-  if(index === endnum) {
-    /* 주어진 질문에 모두 대답을 마쳤으면 end() 호출 후 함수 종료 */
-    end();
-    return ;
-  }
-  //버튼 value를 인자로 점수 계산 함수 호출 
-  calculate(button.value, index);
 
-  //화면에 띄우기
-  question.innerText = QnA[index].Q;
-  answer1.innerText = QnA[index].A1;
-  answer2.innerText = QnA[index].A2;
-
-  //다음 질문
-  index++;
-}
