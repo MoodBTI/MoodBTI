@@ -85,7 +85,7 @@ function end(){
   result_img.innerHTML = "<img src='./img/"+result_mbti+".PNG' width='80%' class='img-responsive'>";
   
   for(var i = 0; i < 16; i++){
-    if(resultData[i].mbti == result_mbti){]
+    if(resultData[i].mbti == result_mbti){
       result_text.innerHTML = "<span><b>" + resultData[i].main + "</b></span><span>같은 사람이네요.</span><br><br><span>" + resultData[i].sub + "</span>";
     }
   }
