@@ -14,38 +14,36 @@ for(var i = 0; i<12;i++)
   bar[i] = document.getElementById(i);
 
 var index = 0;
-var endnum = 11;
+var endnum = 12;
 
 function calculate(value, index){
   //스코어 ++1
   if (value == "one"){
     score[parseInt(index / 3)][0]++;
-    console.log(index/3 + " " + score[parseInt(index / 3)][0]);
   }
   else if (value == "two"){
     score[parseInt(index / 3)][1]++;
-    
-    console.log(index/3 + " " + score[parseInt(index / 3)][1]);
   }
   else {}
 }
 
 function next(button){
-  /* endnum == 12 */
-  if(index === endnum) {
-    /* 주어진 질문에 모두 대답을 마쳤으면 end() 호출 후 함수 종료 */
-    end();
-    return ;
-  }
+  
   //버튼 value를 인자로 점수 계산 함수 호출 
   calculate(button.value, index);
 
-  
   //바 채우기
   bar[index].style.backgroundColor = 'grey';
   
   //다음 질문
   index++;
+  
+  /* endnum == 12 */
+  if(index == endnum) {
+    /* 주어진 질문에 모두 대답을 마쳤으면 end() 호출 후 함수 종료 */
+    end();
+    return ;
+  }
 
   //화면에 띄우기
   question.innerText = QnA[index].Q;
@@ -90,7 +88,6 @@ function end(){
 		else {
 		}
 	}
-  console.log(result_mbti);
   result_img.innerHTML = "<img src='./img/"+result_mbti+".PNG' width='80%' class='img-responsive'>";
   
   for(var i = 0; i < 16; i++){
