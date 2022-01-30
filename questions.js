@@ -54,12 +54,6 @@ function next(button){
 }
 
 function start(){
-  /*
-  intro.style.display = "none";
-  result.style.display = "flex";
-  result_img.innerHTML = "<img src='./img/ENFP.PNG' class='img-responsive'>";
-
-  */
   intro.style.opacity = "0";
   intro.style.transition = "1s";
   setTimeout(function(){intro.style.display = "none"}, 1000);
