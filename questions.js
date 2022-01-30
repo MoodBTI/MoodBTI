@@ -98,4 +98,12 @@ function end(){
   }
 }
 
+function onclickEvent(){
+  var copyText = document.getElementById('Input');
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("Copy");
+  alert('주소가 복사되었습니다!');
+}
+
 
